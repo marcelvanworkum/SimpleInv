@@ -20,6 +20,14 @@
  The app uses `Lockup` gem to codeword protect the site. It's a simple form of admin login. You can use the heroku site with the following codeword = `simpleinv`.
  
  The site uses `wicked_pdf` to render qrcode labels for easy printing. This is backed by `wkhtmltopdf` under the hood.
+ 
+ ## ENV Vars
+ 
+ The following ENV vars need to be set:
+ - `LOCKUP_CODEWORD`: Lockup codeword to access site.
+ - `LOCKUP_HINT`: Lockup codeword hint.
+ - `SITE_HASH_SALT`: A String salt for `hashids` gem.
+ - `SITE_NAME`: The name to display in the navigation header.
 
  ## License
  
