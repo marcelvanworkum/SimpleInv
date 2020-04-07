@@ -11,7 +11,7 @@
  
  ## Heroku
  
- The webapp is hosted for free using Heroku [here]().
+ The webapp is hosted for free using Heroku [here](https://simpleinvsite.herokuapp.com/).
  
  A `Procfile` is included if you wish to do the same.
  
