@@ -11,13 +11,13 @@
  
  ## Heroku
  
- The webapp is hosted for free using Heroku [here](https://simpleinvsite.herokuapp.com/).
+ The webapp is hosted for free using Heroku [here](https://simpleinvsite.herokuapp.com/?lockup_codeword=simpleinv).
  
  A `Procfile` is included if you wish to do the same.
  
  ## Random Bits
  
- The app uses `Lockup` gem to codeword protect the site. It's a simple form of admin login. You can use the heroku site with the following codeword = `simpleinv`.
+ The app uses `Lockup` gem to codeword protect the site. It's a simple form of admin login. You can use the heroku site with the following codeword = `simpleinv`. _(Note: the above Heroku link has the codeword included as a url parameter for your convience)_
  
  The site uses `wicked_pdf` to render qrcode labels for easy printing. This is backed by `wkhtmltopdf` under the hood.
  
