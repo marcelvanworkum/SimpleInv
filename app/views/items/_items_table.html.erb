@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Barcode</th>
+            <th scope="col">Title</th>
+            <th scope="col">Purchase</th>
+            <th scope="col">Sale</th>
+            <th scope="col">Profit</th>
+            <th scope="col">Age (Days)</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        
+        <% for item in items %>
+          <%=  render 'table_item', item: item  %>
+        <% end %>
+      </table>
+      <%= will_paginate @items, list_classes: %w(pagination justify-content-center) %>
+  </div>
+</div>

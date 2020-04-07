@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col">
+    <h1>Sale</h1>
+
+    <%= render 'error', object: @item %>
+    <div class="card">
+      <div class="card-body">
+        <%= form_for @item do |f| %>
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <%= f.label :sale_price %>
+                <%= f.number_field :sale_price, autofocus: true, class: 'form-control', value: @item.sale_price, step: 0.01 %>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="form-group">
+                <%= f.label :postage_cost %>
+                <%= f.number_field :postage_cost, class: 'form-control', value: @item.postage_cost || 0.0, step: 0.01 %>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="form-group">
+                <%= f.label :date_sold %>
+                <%= f.date_field :date_sold, class: 'form-control', :value => @item.date_sold || Time.now.strftime('%Y-%m-%d') %>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <%= f.label :method_of_payment %>
+                <%= f.select :method_of_payment, options_for_select(["Eftpos", "Credit Card", "Paywave", "Cash", "Internet Banking", "Store Credit", "Other"], selected: @item.method_of_payment), {}, class: 'form-control' %>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="form-group">
+                <%= f.label :location_of_sale %>
+                <%= f.select :location_of_sale, options_for_select(["Hey Jude Boutique", "Online", "Other"], selected: @item.location_of_sale), {}, class: 'form-control' %>
+              </div>
+            </div>
+          </div>
+
+          <%= link_to 'Back', item_path(@item), class: 'btn btn-primary' %>
+
+          <%= f.submit 'Sell', class: 'btn btn-success' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,24 @@
+<tbody>
+  <% if item.rubbish_data? %>
+    <tr class="table-warning" >
+  <% else %>
+    <tr class=<%= item.removed? ? "table-danger" : ""%>>
+  <% end %>
+    <th scope="row"><%= item.hashcode %></th>
+    <td><%= item.title %></td>
+    <td>$<%= item.purchase_total %></td>
+    <td><%= item.sale_total_str %></td>
+    <td class=<%= (item.profit? || 0) < 0 ? "table-warning" : "" %>><%= item.profit_str %></td>
+    <td class=<%= item.lifetime < 0 ? "table-danger" : "" %>><%= item.lifetime %></td>
+
+    <% if item.removed? %>
+      <td>Removed from Sale</td>
+    <% elsif item.barcoded %>
+      <td>-</td>
+    <% else %>
+      <td><%= link_to 'Set as Barcoded', item_barcode_path(id: item.hashcode), class: 'btn btn-warning' %></td>
+    <% end %>   
+    
+    <td><%= link_to 'View', item, class: 'btn btn-primary' %></td>
+  </tr>
+</tbody>

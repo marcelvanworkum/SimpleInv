@@ -1,0 +1,123 @@
+<div class="card">
+  <div class="card-body">
+    <h1 class="card-title"><%= @item.title.titleize %> - $<%= @item.listing_price %></h2>
+    <h2 class="card-subtitle mb-2 text-muted"><%= @item.hashcode %></h2>
+
+    <% if @item.removed? %>
+      <h1 class="text-warning">Removed: <%= item.removal_reason %></h1>
+    <% end %>
+
+    <div class="row">
+      <div class="col-sm">
+        <h3>Purchase</h3>
+        <table class="table">
+          <tbody>
+            <tr>
+              <th scope="row">Price</th>
+              <td>$<%= @item.purchase_price %></td>
+            </tr>
+            <tr>
+              <th scope="row">Postage</th>
+              <td>$<%= @item.purchase_postage_cost %></td>
+            </tr>
+            <tr>
+              <th scope="row">Date</th>
+              <td><%= @item.date_purchased %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <% unless @item.extra_info.empty? %>
+        <div class="col-sm">
+          <h3>Extra</h3>
+          <table class="table">
+            <tbody>
+              <%  @item.extra_info.each do |v|  %>
+                <tr>
+                  <th scope="row"><%=  v[:k]  %></th>
+                  <td><%=  v[:v]  %></td>
+                </tr>
+              <%  end  %>
+            </tbody>
+          </table>
+        </div>
+      <%  end %>
+
+      <% if @item.date_sold %>
+        <div class="col-sm">
+          <h3>Sale</h3>
+          <table class="table">
+            <tbody>
+              <tr>
+                <th scope="row">Sale Price</th>
+                <td>$<%= @item.sale_price %></td>
+              </tr>
+              <tr>
+                <th scope="row">Postage Cost</th>
+                <td>$<%= @item.postage_cost %></td>
+              </tr>
+              <tr>
+                <th scope="row">Date Sold</th>
+                <td><%= @item.date_sold %></td>
+              </tr>
+              <tr>
+                <th scope="row">Method of Payment</th>
+                <td><%= @item.method_of_payment %></td>
+              </tr>
+              <tr>
+                <th scope="row">Location of Sale</th>
+                <td><%= @item.location_of_sale %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="col-sm">
+          <h3>Margins</h3>
+          <table class="table">
+            <tbody>
+              <tr>
+                <th scope="row">Revenue</th>
+                <td>$<%= @item.revenue? %></td>
+              </tr>
+              <tr>
+                <th scope="row">Profit</th>
+                <td>$<%= @item.profit? %></td>
+              </tr>
+              <tr>
+                <th scope="row">Lifetime (Days)</th>
+                <td><%= @item.lifetime %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
+
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to 'Edit', edit_item_path(@item), class: 'btn btn-primary' %>
+        <% if not @item.sold? %>
+          <%= link_to 'Sell', item_sell_path(id: @item.hashcode), class: 'btn btn-success' %>
+        <% end %>
+
+        <% if not @item.barcoded %>
+          <%= link_to 'Set as Barcoded', item_barcode_path(id: @item.hashcode), class: 'btn btn-warning' %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 8em">
+      <div class="col">
+        <h4 class="text-danger">Danger Zone</h4>
+
+        <% if not @item.removed? %>
+          <%= link_to 'Remove Item From Sale', item_remove_path(id: @item.hashcode), class: 'btn btn-warning' %>
+        <% end %>
+        <%= link_to 'Delete Item Permanently', item_path(@item), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger' %>
+      </div>
+    </div>
+  </div>
+</div>

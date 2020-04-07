@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col">
+    <h1>Metrics</h1>
+
+    <div class="card">
+      <div class="card-body">
+        <h3>Total Unsold Items: <%= @unsold_items.count %> </h3>
+        <h3>Total Unsold Items Older than 365 days: <%= Item.old.count %> </h3>
+        <h3>Total Sold Items: <%= @sold_items.count %> </h3>
+
+        <div class="row">
+          <div class="col-md-12 bs-linebreak">
+          </div>
+        </div>
+
+        <h3>Revenue Per Week</h3>
+        <%= column_chart @revenue %>
+        <h3>Profit Per Week</h3>
+        <%= column_chart @profit %>
+
+        <h3>Total Items Listed Per Week</h3>
+        <%= column_chart Item.group_by_week(:created_at).count %>
+
+        <h3>Sales Per Day in Last Month</h3>
+        <%= line_chart Item.where("date_sold > ?", 1.month.ago).group_by_day(:date_sold).count %>
+
+        <h3>Sales Per Week in Last Year</h3>
+        <%= line_chart Item.where("date_sold > ?", 1.year.ago).group_by_week(:date_sold).count %>
+      </div>
+    </div>
+  </div>
+</div>
+

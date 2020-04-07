@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <%= link_to Rails.configuration.site_name, root_path, class: "navbar-brand" %>
+  <button 
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <%= link_to 'Inventory', items_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Create', new_item_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Metrics', item_stats_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Print', items_print_path(:format => 'pdf'), class: "nav-link" %>
+      </li>
+    </ul>
+
+    <%= form_tag items_search_path, method: :get, class: "form-inline my-2 my-lg-0" do %>
+      <%= text_field_tag :search_phrase,
+                          "",
+                          class: 'form-control mr-sm-2',
+                          required: true,
+                          autofocus: true,
+                          autocomplete: 'off',
+                          placeholder: "Search" %>
+
+      <%= submit_tag 'Search', class: 'btn btn-outline-success my-2 my-sm-0'%>
+    <% end %>
+  </div>
+</nav>

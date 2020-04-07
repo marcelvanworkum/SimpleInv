@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col">
+    <h1>Remove from Sale</h1>
+
+    <%= render 'error', object: @item %>
+    <div class="card">
+      <div class="card-body">
+        <%= form_for @item do |f| %>
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <%= f.label :removal_date %>
+                <%= f.date_field :removal_date, class: 'form-control', :value => Time.now.strftime('%Y-%m-%d') %>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="form-group">
+                <%= f.label :removal_reason %>
+                <%= f.select :removal_reason, options_for_select(["Damaged", "Out of Date", "Exchanged", "Other"], selected: @item.removal_reason), {}, class: 'form-control' %>
+              </div>
+            </div>
+          </div>
+
+          <%= link_to 'Back', item_path(@item), class: 'btn btn-primary' %>
+
+          <%= f.submit 'Remove Item From Sale', class: 'btn btn-danger' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

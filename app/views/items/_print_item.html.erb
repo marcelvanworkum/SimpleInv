@@ -1,0 +1,12 @@
+<div style="margin:10px; padding:10px; border-style: dotted; page-break-inside: avoid; display: inline-block;">
+  <% if item.listing_price != 0 %>
+    <h2>$<%= number_with_precision(item.listing_price, precision: 2) %></h2>
+  <% else %>
+    <h2>$  ___</h2>
+  <% end %>
+
+  <h4><%= item.title.titleize %></h4>
+  
+  <%= item.qrcode %>
+  <h4><%= item.hashcode %></h4>
+</div>

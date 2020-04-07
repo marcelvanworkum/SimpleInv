@@ -1,0 +1,7 @@
+<%= render 'filter_options',
+            search_types: @search_types,
+            current_search_type: @current_search_type,
+            search_orders: @search_orders,
+            current_search_order: @current_search_order %>
+
+<%= render 'items_table', items: @items %>
