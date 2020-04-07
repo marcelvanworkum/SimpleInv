@@ -7,6 +7,6 @@
  
  It's basic, opinionated and get's a very specific job done.
  
- The code has been open soured using an MIT license with the permission of the original client.
+ The code has been open soured using an Unlicense with the permission of the original client.
  
  The webapp is hosted for free using Heroku. A `Procfile` is included if you wish to do the same.
